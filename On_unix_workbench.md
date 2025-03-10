@@ -18,6 +18,10 @@ table of contents
     - [remote machines](#remote-machines)
     - [Checking differences in files](#checking-differences-in-files)
     - [Makefiles](#makefiles)
+
+
+
+
 ---
 ## the Shell
 - `\` escape caracter
@@ -146,6 +150,40 @@ readme.txt: toc.txt
 3. run ```make [taget_file]``` or plainly ```make``` (if one creates a rule at the top of the makefile called **all** where we can list all files that are built by the makefile. By adding the **all** target we can simply run ```make``` without any arguments in order to build all targets in the makefile)
 
 ## Git and Github
+Git is a VCS (version control system) that uses a **three-tree architecture**:
+1. (git) repository;
+2. working copy;
+3. staging index.
+
+In git files can exist in 3 stages:
+- modified - file has changes but they were not yet commited to the local database
+- staged - marked a modified version of a file to go into the next commit snapshot
+- commited - data is safely stored in the local database
+
+ Git object storage is a **DAG (Directed Acyclic Graph)** of objects, with a handful of different types of objects:
+ - **blobs, trees, commits, tags** 
+ 
+ They are all **stored compressed and identified by an SHA-1 hash**. -> Everything in Git is checksummed before it is stored and is then referred to by that checksum.
+
+ + `References - pointers to commits`, whether they [references] are local branches, remote branches, or tags, **make commits**, which are nodes in a graph, **reachable**, so that it is possible to get back to them.
+
+ On disk, a local branch reference consists entirely of a file, that contains the 40-byte identifier of the commit that the reference points to, in your project's .git/refs/heads directory.
+
+ Because a git branch is so fast and unobtrusive, and branches are references that make commits reachable, creating a branch is a way to pin down part of the graph that might be important to come back later.
+
+ Usually the HEAD file is a symbolic reference to the branch you’re currently on. By symbolic reference, we mean that unlike a normal reference, it contains a pointer to another reference.
+
+ ```sh
+cat .git/HEAD
+#output: ref: refs/heads/master
+```
+if `git checkout test`, Git updates the file to look like this:
+```sh
+cat .git/HEAD
+#output: ref: refs/heads/test
+```
+
+
 
 - setting up git and github:
 
@@ -167,6 +205,42 @@ git init
 - You can **track changes** to a file using `git add [names of files]`.
 - You can create a milestone about the state of your files using `git commit -m "message about changes since the last commit"`.
 - To examine the state of files in your repository use `git status`.
+
+#### Git commands:
+  >Basics:
+  - `git help <command>`: get help for a git command
+  - ```git init```: creates a new git repo, with data stored in the .git directory
+  - ```git status```: tells you what’s going on
+  - ```git add <filename>```: adds files to staging area
+  - ```git commit```: creates a new commit
+  - `git log`: shows a flattened log of history
+  - `git log --all --graph --decorate`: visualizes history as a DAG
+  - `git diff <filename>`: show changes you made relative to the staging area
+  - `git diff <revision> <filename>`: shows differences in a file between snapshots
+  - `git checkout <revision>`: updates HEAD and current branch
+
+  >Branching and merging:
+  - ```git branch```: shows branches
+  - ```git branch <name>```: creates a branch
+  - ```git checkout -b <name>```: creates a branch and switches to it
+  (same as git branch \<name>; git checkout <name>)
+  - ```git merge <revision>```: merges into current branch
+  - `git mergetool`: use a fancy tool to help resolve merge conflicts
+  - `git rebase`: rebase set of patches onto a new base
+  
+  >Remotes:
+  - `git remote`: list remotes
+  - `git remote add \<name> \<url>`: add a remote
+  - `git push <remote> <local branch>:<remote branch>`: send objects to remote, and update remote reference
+  - `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
+  - `git fetch`: retrieve objects/references from a remote
+  - `git pull`: same as `git fetch; git merge`
+  - `git clone`: download repository from remote
+  
+  >Undo:
+  - `git commit --amend`: edit a commit’s contents/message
+  - `git reset HEAD <file>`: unstage a file
+  - `git checkout -- <file>`: discard changes
 
 ## Nephology
 

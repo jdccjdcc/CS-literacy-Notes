@@ -280,7 +280,7 @@ ML_Project/
   # Add the remote GitHub repository:
   git remote add origin https://github.com/your-username/your-repository.git
   # Push to GitHub:
-  git push -u origin master
+  git push -u origin main
   ```
 
   >Basics:
@@ -310,7 +310,7 @@ ML_Project/
   - `git push <remote> <local branch>:<remote branch>`: send objects to remote, and update remote reference
   - `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
   - `git fetch`: retrieve objects/references from a remote
-  - `git pull`: same as git fetch; git merge
+  - `git pull`: same as `git fetch; git merge`
   - `git clone`: download repository from remote
   
   >Undo:
