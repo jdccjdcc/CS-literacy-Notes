@@ -1,4 +1,4 @@
-## Notes on CS Literacy
-This repo was conceived to track and back up notes on
-1. basic Computer Science literacy concepts;
-2. practical tutorials, useful commands or functions
+### Notes on CS Literacy
+Notes on basic Computer Science literacy concepts, as well as tutorials, useful commands or functions.
+
+Most files are accompanied by sources lists
