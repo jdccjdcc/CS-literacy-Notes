@@ -129,15 +129,29 @@ find . -name '*.png' -exec convert {} {}.jpg \;
 ## Dotfiles
 Many programs are configured using plain-text files known as dotfiles (because the file names begin with a ```.```, e.g. ```~/.zshrc```, so that they are hidden in the directory listing ls by default).
 
-git - ~/.gitconfig
-vim - ~/.vimrc and the ~/.vim folder
-ssh - ~/.ssh/config
+Some other examples of tools that can be configured through dotfiles are:
++ zsh - ~/.zshrc
++ bash - ~/.bashrc, ~/.bash_profile
++ zim - ~/.zimrc
++ git - ~/.gitconfig
++ vim - ~/.vimrc and the ~/.vim folder
++ ssh - ~/.ssh/config
++ tmux - ~/.tmux.conf
++ taskwarrior - ~/.taskrc
+
+Dotfiles should be in their own folder, under version control, and **symlinked** into place using a script. This has the benefits of:
++ Easy installation: if you log in to a new machine, applying your customizations will only take a minute.
++ Portability: your tools will work the same way everywhere.
++ Synchronization: you can update your dotfiles anywhere and keep them all in sync.
++ Change tracking: you’re probably going to be maintaining your dotfiles for your entire programming career, and version history is nice to have for long-lived projects.
 
 ## Git and Github
 |resouses on git|
 |---|
 |[git distributed](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F)|
 |[git for computer scientists](https://eagain.net/articles/git-for-computer-scientists/)|
+|[git from the bottom up](https://jwiegley.github.io/git-from-the-bottom-up/)|
+|[think like (a) Git](https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html)|
 
 Git is a VCS (version control system) that uses a **three-tree architecture**:
 1. (git) repository;
